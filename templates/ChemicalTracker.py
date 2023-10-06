@@ -63,3 +63,20 @@ for i in range(rows):
     i+1
 
 print(Chemicals)
+
+def ChemLevels(Chemicals):
+    status = False
+#create comparison for user input of chemicals and of given limits
+    while True:
+        if Chemicals[i][3]>Chemicals[i][1] or Chemicals[i][3]<Chemicals[i][2]:
+            status = True
+        else:
+            break
+    if i != len(Chemicals):
+        i+1
+    else:
+        False
+    return status
+
+
+
