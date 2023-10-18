@@ -1,82 +1,34 @@
 #Kristen Vigna
 #Aquamanage
 #October 02, 2023
+#Edited by: Elise Dezotell
+#October 16, 2023
 #Create an array that stores user inputed information
 
-#set up for Columns: Chemical Name, Low Value, High Value, Current Value
-col = 4
-print(col)
+from flask import Flask, render_template, request, redirect, url_for
+import sqlite3
 
-#Rows give the number of chemicals being tracked
-while True:
-    try:
-        rows = int(input('How many Chemicals would you like to add? '))
-    except ValueError:
-        print("Sorry, I didn't understand that.")
-        #better try again... Return to the start of the loop
-        continue
-    else:
-        #rows was successfully parsed!
-        #we're ready to exit the loop.
-        break
-#print(rows)
+app = Flask('__main__')
 
-#Create Array
-Chemicals = [[0] * col for i in range(rows)]
+@app.route('/')
+def index():
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+    cursor.execute("CREATE spreadsheet")
+    cursor.execute("SELECT * FROM spreadsheet")
+    data = cursor.fetchall()
+    connection.close()
+    return render_template('index.html', data=data)
 
-for i in range(rows):
-# loop will run for the length of the inner lists
-    Chemicals[i][0] = input("What is the name of the chemical? ")
-   
-   #Test user input for proper values
-    while True:
-        try:
-            Chemicals[i][1] = float(input("What is the lower limit for this chemical? "))
-        except ValueError:
-            print("Sorry, I didn't understand. Please try again.")
-            continue
-        else:
-            #input was valid
-            break
+@app.route('/save', methods=['POST'])
+def save():
+    data = request.form.getlist('data')
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO spreadsheet (column1, column2, column3, column4, column5) VALUES (?, ?, ?, ?, ?)", data)
+    connection.commit()
+    connection.close()
+    return redirect(url_for('index'))
 
-   #Test user input for proper values
-    while True:
-        try:
-            Chemicals[i][2] = float(input("What is the upper limit for this chemical? "))
-        except ValueError:
-            print("Sorry, I didn't understand. Please try again.")
-            continue
-        else:
-            #input was valid
-            break
-
-   #Test user input for proper values
-    while True:
-        try:
-            Chemicals[i][3] = float(input("What is the current value for this chemical? "))
-        except ValueError:
-            print("Sorry, I didn't understand. Please try again.")
-            continue
-        else:
-            #input was valid
-            break
-    i+1
-
-print(Chemicals)
-
-def ChemLevels(Chemicals):
-    status = False
-#create comparison for user input of chemicals and of given limits
-    while True:
-        if Chemicals[i][3]>Chemicals[i][1] or Chemicals[i][3]<Chemicals[i][2]:
-            status = True
-        else:
-            break
-    if i != len(Chemicals):
-        i+1
-    else:
-        False
-    return status
-
-
-
+if __name__ == '__main__':
+    app.run(debug=True)
