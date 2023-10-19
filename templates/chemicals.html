@@ -4,35 +4,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dynamic Spreadsheet</title>
+    <title>Chemical Database</title>
 </head>
 <body>
-    <h1>Dynamic Spreadsheet</h1>
+    <h1>Chemical Database</h1>
 
-    <form action="/save" method="post">
-        <table>
-            <thead>
-                <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
-                    <th>Column 3</th>
-                    <th>Column 4</th>
-                    <th>Column 5</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in data %}
-                <tr>
-                    <td contenteditable="true" name="data">{{ row[0] }}</td>
-                    <td contenteditable="true" name="data">{{ row[1] }}</td>
-                    <td contenteditable="true" name="data">{{ row[2] }}</td>
-                    <td contenteditable="true" name="data">{{ row[3] }}</td>
-                    <td contenteditable="true" name="data">{{ row[4] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <button type="submit">Save</button>
+    <h2>Add Chemical</h2>
+    <form action="/add" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="value">Value:</label>
+        <input type="number" id="value" name="value" step="0.01" required>
+        <button type="submit">Add Chemical</button>
     </form>
+
+    <h2>Chemical Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in data %}
+            <tr>
+                <td>{{ record[1] }}</td>
+                <td>{{ record[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
