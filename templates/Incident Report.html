@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Incident Report{% endblock %}
+
+{% block content %}
+
+	<main class="Site-content">
+		<div ng-app="digiquatics" class="container ng-scope">
+		<div ng-controller="TimeZoneWarningCtrl" class="ng-scope">
+	</div>
+
+
+	<h1>Incident Report</h1>
+
+	<div class="u-form-width-fix well shadowDepth1">
+
+		<form class="ng-pristine ng-valid">
+
+	<div class="form-group">
+		<label class="control-label word-wrap" for="selectlocation_id">Location</label>
+		<select id="selectlocation_id" class="form-control" name="location_id">
+			<option value="--">Select...</option>
+			<option value="">All Locations</option>
+			<option value="17068">Interlachen Country Club Aquatics</option>
+			<option value="17997">Interlachen Country Club Fitness</option>
+		</select></div><div><div class="form-group">
+			<label class="control-label word-wrap" for="select14317_UbKY">Exact Location of Incident:</label>
+			<select id="select14317_UbKY" class="form-control" name="14317_UbKY">
+				<option value="--">Select...</option>
+				<option value="Fitness Center">Fitness Center</option>
+				<option value="Playground">Playground</option>
+				<option value="Pool">Pool</option>
+				<option value="Pool Kitchen &amp; Bar">Pool Kitchen &amp; Bar</option>
+				<option value="Main Clubhouse">Main Clubhouse</option>
+				<option value="Golf Course">Golf Course</option>
+				<option value="Croquet Lawn">Croquet Lawn</option>
+				<option value="Tennis Court">Tennis Court</option>
+				<option value="Pickleball Court">Pickleball Court</option>
+				<option value="Fitness Locker Room">Fitness Locker Room</option>
+				<option value="Golf Locker Room">Golf Locker Room</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label class="control-label word-wrap" for="input14173_SPyr">Please complete a detailed description of incident: *</label>
+			<textarea id="input14173_SPyr" cols="5" rows="3" type="10" class="form-control" name="14173_SPyr"></textarea>
+		</div>
+		<div class="form-group">
+			<label class="control-label word-wrap" for="input-14174_qPqV">Name of Witness:</label>
+			<input id="input-14174_qPqV" type="text" class="form-control" name="14174_qPqV" step="any" value="">
+		</div>
+		<div class="form-group">
+			<label class="control-label word-wrap" for="input-14175_vbbJ">Witness Phone Number:</label>
+			<input id="input-14175_vbbJ" type="text" class="form-control" name="14175_vbbJ" step="any" value=""></div>
+
+		<!--Signatues
+
+		<div class="form-group has-error"><div>
+			<label class="control-label">Click to edit signature of Member Signature:</label>
+			<div>
+				<a href="javascript:void(0);" class="signature-touch"><div class="btn btn-text btn-signature">Add Member Signature: Signature [REQUIRED]</div></a><div role="dialog" class="modal fade" style="display: none;"><div class="modal-dialog"><div class="modal-content"><a class="pull-right close-button link-color pointer-hand" data-dismiss="modal"><i class="material-icons md-35">close</i></a><div class="modal-header"><h1 class="modal-title word-wrap">Member Signature: Signature</h1></div><div class="modal-body"><div class="signature-wrapper"><div class="text-center"><canvas style="touch-action: none;"></canvas></div><div class="buttons"><a class="btn btn-pink btn-block btn-raised" disabled="">APPLY</a><a class="btn btn-grey btn-block btn-raised" disabled="">CLEAR</a></div></div></div></div></div></div></div></div></div><div class="form-group has-error"><div><div><a href="javascript:void(0);" class="signature-touch"><div class="btn btn-text btn-signature">Add Employee Signature: Signature [REQUIRED]</div></a><div role="dialog" class="modal fade"><div class="modal-dialog"><div class="modal-content"><a class="pull-right close-button link-color pointer-hand" data-dismiss="modal"><i class="material-icons md-35">close</i></a><div class="modal-header"><h1 class="modal-title word-wrap">Employee Signature: Signature</h1></div><div class="modal-body"><div class="signature-wrapper"><div class="text-center"><canvas style="touch-action: none;"></canvas></div><div class="buttons"><a class="btn btn-pink btn-block btn-raised" disabled="">APPLY</a><a class="btn btn-grey btn-block btn-raised" disabled="">CLEAR</a></div></div></div></div></div></div></div></div>
+
+				</div>
+		-->
+
+	</div>
+		<button  type="submit">SAVE</button>
+
+	</form>
+	
+		</main>
+
+{% endblock %}
+
