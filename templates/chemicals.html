@@ -1,39 +1,20 @@
 {% extends "base.html" %}
 {% block title %}Chemicals{% endblock %}
-
+{% block content%}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chemical Database</title>
+    <title>Chemicals</title>
 </head>
 <body>
-    <h1>Chemical Database</h1>
+    <h1>Chemicals</h1>
 
     <h2>Add Chemical</h2>
-    <form action="/add" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="value">Value:</label>
-        <input type="number" id="value" name="value" step="0.01" required>
-        <button type="submit">Add Chemical</button>
+    <form action="/addchemical" method="post">
+        Chemical Name: <input type = "text" name = "chemical_name"> <br />
+        Chemical Value: <input type = "number" name = "chemical_value" />
+        <input type = "submit" name = "form" value = "Submit" />
     </form>
-
-    <h2>Chemical Data</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for record in data %}
-            <tr>
-                <td>{{ record[1] }}</td>
-                <td>{{ record[2] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 </body>
 </html>
+ 
