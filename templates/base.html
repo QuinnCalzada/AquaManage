@@ -19,8 +19,7 @@
    <nav class="navbar navbar-expand-lg bg-body-tertiary" class="navbar sticky-top" data-bs-theme="dark">
 
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"></a>
-    <img src= "C:\Users\User\Documents\GitHub\AquaManage\Include\site\python3.11\greenlet\Logo2.png" width="80" height="65"/>
+    <a class="navbar-brand" href="#">AquaManage</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,7 +28,7 @@
 
 
        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="./dashboard">Dashboard</a>
+          <a class="nav-link" aria-current="page" href="./Dashboard">Dashboard</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -37,10 +36,11 @@
             Schedule
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./schedule">Schedule</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="./Schedule">Schedule</a></li>
+            <li><a class="dropdown-item" href="./Rotation Schedule">Rotation Schedule</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="./Open Sub Requests">Open Sub Requests</a></li>
+            <li><a class="dropdown-item" href="./Open Shifts">Open Shifts</a></li>
           </ul>
         </li>
 
@@ -49,10 +49,8 @@
             Chemicals
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./chemicals">Chemicals</a></li>
-            <li><a class="dropdown-item" href="#">Add Chemical Record</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Chemical History</a></li>
+            <li><a class="dropdown-item" href="./Chemical Log">Chemical Log</a></li>
+            <li><a class="dropdown-item" href="./Add Record">Add Record</a></li>
           </ul>
         </li>
 
@@ -61,10 +59,7 @@
             Employees
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./employees">Employees</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="./Contact List">Contact List</a></li>
           </ul>
         </li>
 
@@ -73,10 +68,13 @@
             Maintenence
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./maintenence">Maintenence</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="./Maintenance Request">Maintenance Request</a></li>
+            <li><a class="dropdown-item" href="./Incident Report">Incident Report</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="./Checklist">Checklist</a></li>
+            <li><a class="dropdown-item" href="./Patron Count">Patron Count</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="./Files">Files</a></li>
           </ul>
         </li>
 
@@ -85,10 +83,7 @@
             Lessons
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./lessons">Lessons</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="./Lesson Requests">Lesson Requests</a></li>
           </ul>
         </li>
 
@@ -98,10 +93,13 @@
             Profile
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./profile">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="./My Profile">My Profile</a></li>
+            <li><a class="dropdown-item" href="./My Availability">My Availability</a></li>
+            <li><a class="dropdown-item" href="./My Sub Requests">My Sub Requests<li>
+            <li><a class="dropdown-item" href="./My Time Off Requests">My Time Off Requests</a></li>
+            <li><a class="dropdown-item" href="./My Notifications">My Notifications</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
           </ul>
         </li>
         
@@ -113,6 +111,8 @@
     </div>
   </div>
 </nav>
+
+  {% block content %}{% endblock %}
 
   </body>
 </html>
