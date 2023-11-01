@@ -1,2 +1,40 @@
 {% extends "base.html" %}
-{% block title %}Schedule{% endblock %}
+
+{% block title %}Chemical Log{% endblock %}
+
+{% block content%}
+
+<main class = "container">
+
+    <br></br>
+    <h1 align = "center">Chemical Log</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Free Chlorine (ppm)</th>
+      <th scope="col">pH</th>
+      <th scope="col">Alkalinity</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {%for i in range(0,1)%}
+
+        <tr>
+          <th scope="row">1</th>
+          <td>{{chlorine_value}}</td>
+          <td>{{pH_value}}</td>
+          <td>{{Alkalinity_value}}</td>
+        </tr>
+
+    {%endfor%}
+
+  </tbody>
+</table>
+
+</main>
+
+{% endblock %}

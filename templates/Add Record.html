@@ -1,2 +1,29 @@
 {% extends "base.html" %}
-{% block title %}Schedule{% endblock %}
+{% block title %}Add Record{% endblock %}
+
+{% block content%}
+
+	<br></br>
+    <h1 align = "center">Add Record</h1>
+    
+    <form action="#" method="post" class = "container">
+
+    <div class="form-group">
+    	<label for="exampleFormControlInput1">Free Chlorine (ppm) </label>
+   	 	<input class="form-control" type = "number" step= "0.1" min = "0" name = "chlorine_value">
+  	</div>
+  	<div class="form-group">
+    	<label for="exampleFormControlInput1">pH</label>
+   	 	<input class="form-control" type = "number" step= "0.1" min = "0" name = "pH_value">
+  	</div>
+  	<div class="form-group">
+    	<label for="exampleFormControlInput1">Alkalinity </label>
+   	 	<input class="form-control" type = "number" step= "0.1" min = "0" name = "Alkalinity_value">
+  	</div>
+         
+        <input type = "submit" value = "Submit" class="btn btn-outline-primary" >
+
+    </form>
+
+
+{% endblock %}
