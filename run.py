@@ -1,7 +1,32 @@
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = "hello"
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+
+db = SQLAlchemy(app)
+
+class users(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	name = db.Column(db.String(100))
+	email = db.Column(db.String(100))
+
+	def __init__(self, name, email):
+		self.name = name
+		self.email = email
+
+class chemicalLog(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	chlorine = db.Column(db.Float)
+	pH = db.Column(db.Float)
+	Alkalinity = db.Column(db.Float)
+
+	def __init__(self, chlorine, pH, Alkalinity):
+		self.chlorine = chlorine
+		self.pH = pH
+		self.Alkalinity = Alkalinity
 
 @app.route("/Dashboard")
 def dashboard():
@@ -23,13 +48,41 @@ def openSubRequests():
 def openShifts():
 	return render_template("Open Shifts.html")
 
-@app.route("/Chemical Log")
-def chemicalLog():
-	return render_template("Chemical Log.html")
 
-@app.route("/Add Record")
+@app.route("/Chemical Log", methods=["POST", "GET"])
+def chemicalLog():
+
+	if "chemical_value" in session:
+		
+		chlorine_value = session["chlorine_value"]
+		pH_value = session["pH_value"]
+		Alkalinity_value = session["Alkalinity_value"]
+		
+		return render_template("Chemical Log.html", chlorine_value = chlorine_value, pH_value = pH_value, Alkalinity_value = Alkalinity_value)
+
+	else:
+
+		return render_template("Chemical Log.html")
+
+
+@app.route("/Add Record", methods=["POST", "GET"])
 def addRecord():
-	return render_template("Add Record.html")
+
+	if request.method == "POST":
+
+		chlorine_value = request.form["chlorine_value"]
+		pH_value = request.form["pH_value"]
+		Alkalinity_value = request.form["Alkalinity_value"]
+
+		session["chlorine_value"] = chlorine_value
+		session["pH_value"] = pH_value
+		session["Alkalinity_value"] = Alkalinity_value
+		
+		return redirect(url_for("chemicalLog"))
+
+	else:
+
+		return render_template("Add Record.html")
 
 @app.route("/Contact List")
 def contactList():
@@ -45,7 +98,7 @@ def maintenanceRequest():
 
 @app.route("/Incident Report", methods=["POST", "GET"])
 def incidentReport():
-	if request.method == "POST"
+	if request.method == "POST":
 		pass
 	else:
 		return render_template("Incident Report.html")
@@ -94,6 +147,8 @@ def login():
 def logout():
 	return redirect(url_for("login"))
 
+with app.app_context():
+    db.create_all()
 
 if __name__ == "__main__":
 	app.run(debug = True)
