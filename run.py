@@ -1,12 +1,17 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash
 from flask_sqlalchemy import SQLAlchemy
 
+from sqlalchemy.sql import func
+
 app = Flask(__name__)
 app.secret_key = "hello"
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///chemicalEntries.db"
+SQLALCHEMY_BINDS = { "users": "sqlite:///users.db"}
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
 
 class users(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
@@ -17,16 +22,16 @@ class users(db.Model):
 		self.name = name
 		self.email = email
 
-class chemicalLog(db.Model):
+class chemicalEntry(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
-	chlorine = db.Column(db.Float)
-	pH = db.Column(db.Float)
-	Alkalinity = db.Column(db.Float)
+	chlorine = db.Column(db.Float, nullable=True)
+	pH = db.Column(db.Float, nullable=True)
+	alkalinity = db.Column(db.Float, nullable=True)
 
-	def __init__(self, chlorine, pH, Alkalinity):
+	def __init__(self, chlorine, pH, alkalinity):
 		self.chlorine = chlorine
 		self.pH = pH
-		self.Alkalinity = Alkalinity
+		self.alkalinity = alkalinity
 
 @app.route("/Dashboard")
 def dashboard():
@@ -50,19 +55,11 @@ def openShifts():
 
 
 @app.route("/Chemical Log", methods=["POST", "GET"])
-def chemicalLog():
-
-	if "chemical_value" in session:
+def chemicalLog():		
 		
-		chlorine_value = session["chlorine_value"]
-		pH_value = session["pH_value"]
-		Alkalinity_value = session["Alkalinity_value"]
-		
-		return render_template("Chemical Log.html", chlorine_value = chlorine_value, pH_value = pH_value, Alkalinity_value = Alkalinity_value)
+	entry = chemicalEntry.query.all()
 
-	else:
-
-		return render_template("Chemical Log.html")
+	return render_template("Chemical Log.html", entry = entry)
 
 
 @app.route("/Add Record", methods=["POST", "GET"])
@@ -72,12 +69,15 @@ def addRecord():
 
 		chlorine_value = request.form["chlorine_value"]
 		pH_value = request.form["pH_value"]
-		Alkalinity_value = request.form["Alkalinity_value"]
+		alkalinity_value = request.form["alkalinity_value"]
 
-		session["chlorine_value"] = chlorine_value
-		session["pH_value"] = pH_value
-		session["Alkalinity_value"] = Alkalinity_value
-		
+		entry = chemicalEntry(chlorine_value, pH_value, alkalinity_value)
+
+		db.session.add(entry)
+		db.session.commit()
+
+		flash("Successfull entry")
+
 		return redirect(url_for("chemicalLog"))
 
 	else:
