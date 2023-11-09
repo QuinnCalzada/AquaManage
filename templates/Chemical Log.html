@@ -6,6 +6,23 @@
 
 <main class = "container">
 
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <br></br>
+                <div class="alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
     <br></br>
     <h1 align = "center">Chemical Log</h1>
 
@@ -21,16 +38,27 @@
 
   <tbody>
 
-    {%for i in range(0,1)%}
+    {% for chemicalEntry in entry %}
 
         <tr>
-          <th scope="row">1</th>
-          <td>{{chlorine_value}}</td>
-          <td>{{pH_value}}</td>
-          <td>{{Alkalinity_value}}</td>
+            <td scope = "row">{{ chemicalEntry.id }}</td>
+
+        {% if chemicalEntry.chlorine > 5.0 or chemicalEntry.chlorine < 3.0 %}
+
+            <td class="bg-danger">{{ chemicalEntry.chlorine }}</td>
+
+        {% else %}
+
+            <td>{{ chemicalEntry.chlorine }}</td>
+
+        {% endif %}
+
+          <td>{{ chemicalEntry.pH }}</td>
+          <td>{{ chemicalEntry.alkalinity }}</td>
+
         </tr>
 
-    {%endfor%}
+    {% endfor %}
 
   </tbody>
 </table>
