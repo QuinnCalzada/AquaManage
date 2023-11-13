@@ -1,2 +1,39 @@
 {% extends "base.html" %}
-{% block title %}Schedule{% endblock %}
+{% block title %}Contact List{% endblock %}
+{% block content%}
+
+<main class = "container">
+
+  {% with messages = get_flashed_messages() %}
+
+      {% if messages %}
+
+          {% for message in messages %}
+
+              <br></br>
+              <div class="alert alert-primary" role="alert">
+                  {{ message }}
+              </div>
+
+          {% endfor %}
+
+      {% endif %}
+
+  {% endwith %}
+
+  <br></br>
+  <h1 align = "center">Employee Contacts</h1>
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Email</th>
+    <th scope="col">Emergency Contact Name</th>
+    <th scope="col">Emergency Contact Number</th>
+  </tr>
+</thead>
+
+  {% endblock %}
