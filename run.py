@@ -27,11 +27,18 @@ class chemicalEntry(db.Model):
 	chlorine = db.Column(db.Float, nullable=True)
 	pH = db.Column(db.Float, nullable=True)
 	alkalinity = db.Column(db.Float, nullable=True)
+	calciumHardness = db.Column(db.Float, nullable = True)
+	cyanuricAcid = db.Column(db.Float, nullable = True)
+	waterClarity = db.Column(db.String(50), nullable = True)
 
-	def __init__(self, chlorine, pH, alkalinity):
+	def __init__(self, chlorine, pH, alkalinity, calciumHardness, cyanuricAcid, waterClarity):
 		self.chlorine = chlorine
 		self.pH = pH
 		self.alkalinity = alkalinity
+		self.calciumHardness = calciumHardness
+		self.cyanuricAcid = cyanuricAcid
+		self.waterClarity = waterClarity
+
 
 @app.route("/Dashboard")
 def dashboard():
@@ -70,8 +77,11 @@ def addRecord():
 		chlorine_value = request.form["chlorine_value"]
 		pH_value = request.form["pH_value"]
 		alkalinity_value = request.form["alkalinity_value"]
+		calcium_value = request.form["calcium_value"]
+		cyanuricAcid_value = request.form["cyanuricAcid_value"]
+		waterClarity_entry = request.form["waterClarity_entry"]
 
-		entry = chemicalEntry(chlorine_value, pH_value, alkalinity_value)
+		entry = chemicalEntry(chlorine_value, pH_value, alkalinity_value, calcium_value, cyanuricAcid_value, waterClarity_entry)
 
 		db.session.add(entry)
 		db.session.commit()

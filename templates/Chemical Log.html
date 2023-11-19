@@ -33,6 +33,9 @@
       <th scope="col">Free Chlorine (ppm)</th>
       <th scope="col">pH</th>
       <th scope="col">Alkalinity</th>
+      <th scope="col">Calcium Hardness</th>
+      <th scope="col">Cyanuric Acid</th>
+      <th scope="col">Water Clarity</th>
     </tr>
   </thead>
 
@@ -52,9 +55,56 @@
             <td>{{ chemicalEntry.chlorine }}</td>
 
         {% endif %}
+        
+        {% if chemicalEntry.pH > 7.8 or chemicalEntry.pH < 7.2 %} 
 
-          <td>{{ chemicalEntry.pH }}</td>
-          <td>{{ chemicalEntry.alkalinity }}</td>
+            <td class="bg-danger">{{ chemicalEntry.pH }}</td>
+
+        {% else %}
+
+            <td>{{ chemicalEntry.pH }}</td>
+
+        {% endif %}
+        
+        {% if chemicalEntry.alkalinity > 180 or chemicalEntry.alkalinity < 60 %}
+
+            <td class="bg-danger">{{ chemicalEntry.alkalinity }}</td>
+
+        {% else %}
+
+            <td>{{ chemicalEntry.alkalinity }}</td>
+
+        {% endif %}
+        
+        {% if chemicalEntry.calciumHardness > 1000 or chemicalEntry.calciumHardness < 150 %}
+
+            <td class="bg-danger">{{ chemicalEntry.calciumHardness }}</td>
+
+        {% else %}
+
+            <td>{{ chemicalEntry.calciumHardness }}</td>
+
+        {% endif %}
+        
+        {% if chemicalEntry.cyanuricAcid > 50 or chemicalEntry.cyanuricAcid < 30 %}
+
+            <td class="bg-danger">{{ chemicalEntry.cyanuricAcid }}</td>
+
+        {% else %}
+
+            <td>{{ chemicalEntry.cyanuricAcid }}</td>
+
+        {% endif %}
+
+        {% if chemicalEntry.waterClarity != "clear" %}
+
+            <td class="bg-danger">{{ chemicalEntry.waterClarity }}</td>
+
+        {% else %}
+
+            <td>{{ chemicalEntry.waterClarity }}</td>
+
+        {% endif %}
 
         </tr>
 
