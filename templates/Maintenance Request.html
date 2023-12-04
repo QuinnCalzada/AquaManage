@@ -1,2 +1,63 @@
 {% extends "base.html" %}
-{% block title %}Schedule{% endblock %}
+
+{% block title %}Maintenance Request{% endblock %}
+
+{% block content %}
+
+<main class="Site-content">
+    <div ng-app="digiquatics" class="container ng-scope">
+    <div ng-controller="TimeZoneWarningCtrl" class="ng-scope">
+</div>
+
+
+<h1>Maintenance Request</h1>
+
+<div class="u-form-width-fix well shadowDepth1">
+
+    <form class="ng-pristine ng-valid">
+
+<div class="form-group">
+    <label class="control-label word-wrap" for="selectlocation_id">Location</label>
+    <select id="selectlocation_id" class="form-control" name="location_id">
+        <option value="--">Select...</option>
+        <option value="">All Locations</option>
+        <option value="17068">Interlachen Country Club Aquatics</option>
+        <option value="17997">Interlachen Country Club Fitness</option>
+    </select></div><div><div class="form-group">
+        <label class="control-label word-wrap" for="select14317_UbKY">Exact Location of Needed Maintenance:</label>
+        <select id="select14317_UbKY" class="form-control" name="14317_UbKY">
+            <option value="--">Select...</option>
+            <option value="Fitness Center">Fitness Center</option>
+            <option value="Playground">Playground</option>
+            <option value="Pool">Pool</option>
+            <option value="Pool Kitchen &amp; Bar">Pool Kitchen &amp; Bar</option>
+            <option value="Main Clubhouse">Main Clubhouse</option>
+            <option value="Golf Course">Golf Course</option>
+            <option value="Croquet Lawn">Croquet Lawn</option>
+            <option value="Tennis Court">Tennis Court</option>
+            <option value="Pickleball Court">Pickleball Court</option>
+            <option value="Fitness Locker Room">Fitness Locker Room</option>
+            <option value="Golf Locker Room">Golf Locker Room</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label word-wrap" for="input14173_SPyr">Please complete a detailed description of needed maintenance: *</label>
+        <textarea id="input14173_SPyr" cols="5" rows="3" type="10" class="form-control" name="14173_SPyr"></textarea>
+    </div>
+    <div class="form-group">
+        <label class="control-label word-wrap" for="input-14174_qPqV">Name:</label>
+        <input id="input-14174_qPqV" type="text" class="form-control" name="14174_qPqV" step="any" value="">
+    </div>
+    <div class="form-group">
+        <label class="control-label word-wrap" for="input-14175_vbbJ">Phone Number:</label>
+        <input id="input-14175_vbbJ" type="text" class="form-control" name="14175_vbbJ" step="any" value=""></div>
+
+</div>
+
+    <button  type="submit">SAVE</button>
+
+</form>
+
+    </main>
+
+{% endblock %}
