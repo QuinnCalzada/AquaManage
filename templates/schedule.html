@@ -1,2 +1,170 @@
 {% extends "base.html" %}
 {% block title %}Schedule{% endblock %}
+
+{% block content %}
+
+<main class="Site-content">
+    <div ng-app="digiquatics" class="container ng-scope">
+    <div ng-controller="TimeZoneWarningCtrl" class="ng-scope">
+</div>
+
+
+<h1><center>Event Schedule</center></h1>
+
+<body>
+
+	<table border="5" cellspacing="0" align="center">
+		<!--<caption>Timetable</caption>-->
+		<tr>
+			<td align="center" height="50" width="100">
+				<b>Time/Day</b></br>
+			</td>
+			<td align="center" height="50" width="100">
+				<b>Monday</b>
+			</td>
+			<td align="center" height="50" width="100">
+				<b>Tuesday</b>
+			</td>
+			<td align="center" height="50" width="100">
+				<b>Wednesday</b>
+			</td>
+			<td align="center" height="50" width="100">
+				<b>Thursday</b>
+			</td>
+			<td align="center" height="50" width="100">
+				<b>Friday</b>
+			</td>
+			<td align="center" height="50" width="100">
+				<b>Saturday</b>
+			</td>
+            <td align="center" height="50" width="100">
+				<b>Sunday</b>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" height="50">
+				<b>9:00-10:00</b>
+			</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Closed- Cleaning</td>
+			<td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Swim Lessons Age: 5></td>
+            <td rowspan="11" align="center" height="50">
+				<h2>C<br>L<br>O<br>S<br>E<br>D</h2>
+		</tr>
+		<tr>
+			<td align="center" height="50">
+				<b>10:00-11:00</b>
+			</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Closed- Cleaning</td>
+			<td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Swim Lessons Age: 6-8</td>
+		</tr>
+		<tr>
+			<td align="center" height="50">
+				<b>11:00-12:00</b>
+			</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Swim Lessons Age: 9-12</td>
+		</tr>
+		<tr>
+			<td align="center" height="50">
+				<b>12:00-01:00</b>
+			</td>
+            <td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+		</tr>
+		<tr>
+			<td align="center" height="50">
+				<b>01:00-02:00</b>
+			</td>
+            <td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+		</tr>
+		<tr>
+			<td align="center" height="50">
+				<b>02:00-03:00</b>
+			</td>
+            <td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+		</tr>
+        <tr>
+			<td align="center" height="50">
+				<b>03:00-04:00</b>
+			</td>
+            <td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+		</tr>
+        <tr>
+			<td align="center" height="50">
+				<b>04:00-05:00</b>
+			</td>
+            <td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+		</tr>
+        <tr>
+			<td align="center" height="50">
+				<b>05:00-06:00</b>
+			</td>
+            <td align="center" height="50">Swim Team Practice</td>
+			<td align="center" height="50">Water Polo</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Water Polo</td>
+            <td align="center" height="50">Swim Team Practice</td>
+            <td align="center" height="50">Open Pool</td>
+		</tr>
+        <tr>
+			<td align="center" height="50">
+				<b>06:00-07:00</b>
+			</td>
+            <td align="center" height="50">Swim Team Practice</td>
+			<td align="center" height="50">Swim Lessons Age: Open</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Swim Lessons Age: Open</td>
+            <td align="center" height="50">Swim Team Practice</td>
+            <td align="center" height="50">Open Pool</td>
+		</tr>
+        <tr>
+			<td align="center" height="50">
+				<b>07:00-08:00</b>
+			</td>
+            <td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Swim Lessons Age: Open</td>
+			<td align="center" height="50">Open Pool</td>
+			<td align="center" height="50">Swim Lessons Age: Open</td>
+            <td align="center" height="50">Open Pool</td>
+            <td align="center" height="50">Open Pool</td>
+		</tr>
+	</table>
+</body>
+
+{% endblock %}
