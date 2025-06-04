@@ -7,20 +7,21 @@ app = Flask(__name__)
 app.secret_key = "hello"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///chemicalEntries.db"
-SQLALCHEMY_BINDS = { "users": "sqlite:///users.db"}
+app.config["SQLALCHEMY_BINDS"] = {"users": "sqlite:///users.db"}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
 
 class users(db.Model):
-	id = db.Column(db.Integer, primary_key = True)
-	name = db.Column(db.String(100))
-	email = db.Column(db.String(100))
+    __bind_key__ = "users"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(100))
 
-	def __init__(self, name, email):
-		self.name = name
-		self.email = email
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
 
 class chemicalEntry(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
@@ -42,11 +43,11 @@ class chemicalEntry(db.Model):
 
 @app.route("/Dashboard")
 def dashboard():
-	return render_template("Dashboard.html")
+        return render_template("dashboard.html")
 
 @app.route("/Schedule")
 def schedule():
-	return render_template("Schedule.html")
+        return render_template("schedule.html")
 
 @app.route("/Rotation Schedule")
 def rotationSchedule():
